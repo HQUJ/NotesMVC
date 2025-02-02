@@ -14,7 +14,8 @@ namespace NotesMVC
                 options.UseSqlServer(builder.Configuration.GetConnectionString("NotesMVCContext") ?? throw new InvalidOperationException("Connection string 'NotesMVCContext' not found.")));
 
             //builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+            
+            //promqna
             builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("NotesMVCContext")));
 
             builder.Services.AddDefaultIdentity<Client>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<UserContext>();
@@ -34,6 +35,9 @@ namespace NotesMVC
 
             app.UseHttpsRedirection();
             app.UseRouting();
+
+            //promqna
+            app.MapRazorPages();
 
             app.UseAuthorization();
 
