@@ -10,9 +10,12 @@ namespace NotesMVC.Models
         public string Title { get; set; }
 
         public string Description { get; set; }
-
+        
+        //promqna
+        [ScaffoldColumn(false)]
         public DateTime LastUpdateOn { get; set; }
-        [Required]
-        public Client Client { get; set; }
+        
+        [ScaffoldColumn(false)]
+        public string? ClientEmail { get; set; }
     }
 }
