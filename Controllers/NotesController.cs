@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,19 +12,26 @@ using NotesMVC.Models;
 
 namespace NotesMVC.Controllers
 {
+    //promqna
+    [Authorize]
     public class NotesController : Controller
     {
+        //promqna
         private readonly NotesMVCContext _context;
+        private readonly UserManager<Client> _userManager;
 
-        public NotesController(NotesMVCContext context)
+        //promqna
+        public NotesController(NotesMVCContext context, UserManager<Client> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Notes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Note.ToListAsync());
+            //promqna  
+            return View(await _context.Note.Where(x => x.ClientEmail == User.Identity.Name).ToListAsync());
         }
 
         // GET: Notes/Details/5
@@ -54,10 +63,15 @@ namespace NotesMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,LastUpdateOn")] Note note)
+        //promqna
+        public async Task<IActionResult> Create([Bind("Id,Title,Description")] Note note)
         {
             if (ModelState.IsValid)
             {
+                //promnqa
+                note.LastUpdateOn = DateTime.Now;
+                var currentUser = await _userManager.GetUserAsync(User);
+                note.ClientEmail = User.Identity.Name;
                 _context.Add(note);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -86,7 +100,8 @@ namespace NotesMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,LastUpdateOn")] Note note)
+        //promqna
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description")] Note note)
         {
             if (id != note.Id)
             {
@@ -97,6 +112,9 @@ namespace NotesMVC.Controllers
             {
                 try
                 {
+                    //promqna
+                    note.LastUpdateOn = DateTime.Now;
+                    note.ClientEmail = User.Identity.Name;
                     _context.Update(note);
                     await _context.SaveChangesAsync();
                 }
