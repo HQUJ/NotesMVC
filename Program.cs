@@ -7,7 +7,8 @@ namespace NotesMVC
 {
     public class Program
     {
-        public static void Main(string[] args)
+        //promqna da e Task a ne void
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<NotesMVCContext>(options =>
@@ -18,7 +19,9 @@ namespace NotesMVC
             //promqna
             builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("NotesMVCContext")));
 
-            builder.Services.AddDefaultIdentity<Client>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<UserContext>();
+            builder.Services.AddDefaultIdentity<Client>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<UserContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -46,6 +49,42 @@ namespace NotesMVC
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}")
                 .WithStaticAssets();
+
+            //promqna
+            using (var scope = app.Services.CreateScope())
+            {
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                var roles = new[] { "admin", "client" };
+                foreach (var role in roles)
+                {
+                    if (!await roleManager.RoleExistsAsync(role))
+                        await roleManager.CreateAsync(new IdentityRole(role));
+                }
+            }
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Client>>();
+
+                string email = "admin@admin.com";
+                string password = "AdminPassword1234$";
+
+                if(await userManager.FindByEmailAsync(email)==null)
+                {
+                    var user = new Client();
+                    user.UserName = email;
+                    user.Email = email;
+                    user.EmailConfirmed = true;
+                    user.FirstName = "Administrator";
+
+                    await userManager.CreateAsync(user, password);
+
+                    await userManager.AddToRoleAsync(user, "admin");
+
+                }
+            }
+            //kraj na pormqnta
+
 
             app.Run();
         }

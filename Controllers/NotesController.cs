@@ -31,6 +31,9 @@ namespace NotesMVC.Controllers
         public async Task<IActionResult> Index()
         {
             //promqna  
+            if (User.IsInRole("admin"))
+                return View(await _context.Note.ToListAsync());
+
             return View(await _context.Note.Where(x => x.ClientEmail == User.Identity.Name).ToListAsync());
         }
 

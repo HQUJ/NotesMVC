@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<NotesMVC.Models.Note>
 
+<!--promqna-->
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Client> SignInManager
+
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -21,6 +26,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.LastUpdateOn)
             </th>
+            <!--promqna-->
+            @if(User.IsInRole("admin"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.ClientEmail)
+                </th>
+            }
             <th></th>
         </tr>
     </thead>
@@ -36,6 +48,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.LastUpdateOn)
             </td>
+                <!--promqna-->
+                @if (User.IsInRole("admin"))
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientEmail)
+                    </td>
+                }
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
