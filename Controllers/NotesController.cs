@@ -56,6 +56,10 @@ namespace NotesMVC.Controllers
         }
 
         // GET: Notes/Create
+        
+        //promqna
+        //[HttpPost]
+        //[ValidateInput(false)]
         public IActionResult Create()
         {
             return View();
