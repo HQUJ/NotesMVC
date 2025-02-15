@@ -5,6 +5,14 @@
 @inject SignInManager<Client> SignInManager
 
 
+    <!--promqna-->
+@using (Html.BeginForm("Index", "Notes", FormMethod.Get))
+{
+    <input type="text" name="searchTerm" class="form-control" placeholder="Search notes..." value="@ViewData["SearchTerm"]" />
+    <button type="submit" class="btn btn-primary mt-2">Search</button>
+}
+    <!--kraaj na promqna-->
+
 @{
     ViewData["Title"] = "Index";
 }

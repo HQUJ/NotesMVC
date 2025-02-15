@@ -28,13 +28,23 @@ namespace NotesMVC.Controllers
         }
 
         // GET: Notes
-        public async Task<IActionResult> Index()
+        //promqna
+        public async Task<IActionResult> Index(string searchTerm)
         {
             //promqna  
-            if (User.IsInRole("admin"))
-                return View(await _context.Note.ToListAsync());
+            var notes = from n in _context.Note select n; // Get all notes
 
-            return View(await _context.Note.Where(x => x.ClientEmail == User.Identity.Name).ToListAsync());
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                notes = notes.Where(n => n.Title.Contains(searchTerm) || n.Description.Contains(searchTerm));
+            }
+
+            ViewData["SearchTerm"] = searchTerm;
+
+            if (User.IsInRole("admin"))
+                return View(await notes.ToListAsync());
+
+            return View(await notes.Where(x => x.ClientEmail == User.Identity.Name).ToListAsync());
         }
 
         // GET: Notes/Details/5
