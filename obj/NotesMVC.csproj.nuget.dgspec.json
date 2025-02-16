@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hr2st\\source\\repos\\NotesMVC\\NotesMVC.csproj": {}
+    "C:\\Users\\opr-g\\Documents\\GitHub\\NotesMVC\\NotesMVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hr2st\\source\\repos\\NotesMVC\\NotesMVC.csproj": {
+    "C:\\Users\\opr-g\\Documents\\GitHub\\NotesMVC\\NotesMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hr2st\\source\\repos\\NotesMVC\\NotesMVC.csproj",
+        "projectUniqueName": "C:\\Users\\opr-g\\Documents\\GitHub\\NotesMVC\\NotesMVC.csproj",
         "projectName": "NotesMVC",
-        "projectPath": "C:\\Users\\Hr2st\\source\\repos\\NotesMVC\\NotesMVC.csproj",
-        "packagesPath": "C:\\Users\\Hr2st\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hr2st\\source\\repos\\NotesMVC\\obj\\",
+        "projectPath": "C:\\Users\\opr-g\\Documents\\GitHub\\NotesMVC\\NotesMVC.csproj",
+        "packagesPath": "C:\\Users\\opr-g\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\opr-g\\Documents\\GitHub\\NotesMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Hr2st\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\opr-g\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://www.nuget.org/api/v2/": {}
         },
         "frameworks": {
           "net9.0": {
@@ -50,6 +51,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.5.1, )"
+            },
             "Microsoft.AspNet.Identity.EntityFramework": {
               "target": "Package",
               "version": "[2.2.4, )"
@@ -60,15 +65,11 @@
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[9.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
               "version": "[9.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",

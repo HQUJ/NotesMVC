@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/NotesMVC.styles.css" asp-append-version="true" />
+
+    <style>
+        html{background-color:#fef9e1; color: #a31d1d;}
+
+        div{background-color:#e5d0ac;}
+
+        
+
+        a{text-decoration: none;
+        outline-color: transparent; }
+      a:link, a:visited, a:focus{ color: #6d2323; }
+    </style>
+
 </head>
 <body>
     <header>
@@ -25,7 +38,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li
+                        </li>
                         <!--promqna-->
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Notes" asp-action="Index">My notes</a>
@@ -37,6 +50,7 @@
             <partial name="_LoginPartial" />
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
