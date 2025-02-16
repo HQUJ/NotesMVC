@@ -10,18 +10,26 @@
     <h4>Note</h4>
     <hr />
     <dl class="row">
+        <!--promqna-->
+        <!--
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
+        -->
+        <h2>@Model.Title</h2>
+        <div>@Html.Raw(Model.Description)</div>
+        <!--
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
+        -->
+        <!--promqna-->
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.LastUpdateOn)
         </dt>

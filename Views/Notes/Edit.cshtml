@@ -1,4 +1,18 @@
-﻿@model NotesMVC.Models.Note
+﻿<!--promqna-->
+<script src="https://cdn.tiny.cloud/1/f4e7o4o5ipnirnco9s4quh8tt38suh4aol72fr77hsdeawt5/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+        selector: '#Description',  // Target the textarea
+        height: 300,
+        menubar: false,
+        plugins: 'lists link image preview',
+        toolbar: 'undo redo | bold italic underline | bullist numlist | link image | preview',
+    });
+</script>
+<!--kaj na promqnata-->
+
+@model NotesMVC.Models.Note
 
 @{
     ViewData["Title"] = "Edit";

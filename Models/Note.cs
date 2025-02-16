@@ -9,6 +9,7 @@ namespace NotesMVC.Models
 
         public string Title { get; set; }
 
+        //[AllowHtml]
         public string Description { get; set; }
         
         //promqna
