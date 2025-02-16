@@ -936,3 +936,9 @@ C:\Users\opr-g\Documents\GitHub\NotesMVC\obj\Debug\net9.0\refint\NotesMVC.dll
 C:\Users\opr-g\Documents\GitHub\NotesMVC\obj\Debug\net9.0\NotesMVC.pdb
 C:\Users\opr-g\Documents\GitHub\NotesMVC\obj\Debug\net9.0\NotesMVC.genruntimeconfig.cache
 C:\Users\opr-g\Documents\GitHub\NotesMVC\obj\Debug\net9.0\ref\NotesMVC.dll
+C:\Users\Hr2st\source\repos\NotesMVC\bin\Debug\net9.0\System.Data.SqlClient.dll
+C:\Users\Hr2st\source\repos\NotesMVC\bin\Debug\net9.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Hr2st\source\repos\NotesMVC\bin\Debug\net9.0\runtimes\win-x64\native\sni.dll
+C:\Users\Hr2st\source\repos\NotesMVC\bin\Debug\net9.0\runtimes\win-x86\native\sni.dll
+C:\Users\Hr2st\source\repos\NotesMVC\bin\Debug\net9.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Hr2st\source\repos\NotesMVC\bin\Debug\net9.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
