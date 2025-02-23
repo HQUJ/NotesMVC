@@ -53,7 +53,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-@* ako e client *@
+@* ako e client pokazva samo negovite belezhki*@
 @if (User.IsInRole("client"))
 {
     <table class="table">
@@ -95,7 +95,7 @@
     </table>
 }
 
-@* ako e admin *@
+@* ako e admin pokazva negovite notes purvo i posle tezi na vsichki ostanali kato pokazva i email-a na choveka suzdal belevkata*@
 
 @if (User.IsInRole("admin"))
 {

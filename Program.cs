@@ -7,7 +7,7 @@ namespace NotesMVC
 {
     public class Program
     {
-        //promqna da e Task a ne void
+        //promqna da e Task a ne void, za da moga da izpolzvam await
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -53,6 +53,7 @@ namespace NotesMVC
             //promqna
             using (var scope = app.Services.CreateScope())
             {
+                //suzdava novi roli kato proverqva dali veche ne sushtestvuvat
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
                 var roles = new[] { "admin", "client" };
                 foreach (var role in roles)
@@ -61,7 +62,7 @@ namespace NotesMVC
                         await roleManager.CreateAsync(new IdentityRole(role));
                 }
             }
-
+            //dobavq admin, ako veche nqma
             using (var scope = app.Services.CreateScope())
             {
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Client>>();

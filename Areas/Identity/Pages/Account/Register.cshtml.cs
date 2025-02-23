@@ -123,7 +123,7 @@ namespace NotesMVC.Areas.Identity.Pages.Account
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
 
-                //promqna
+                //promqna - it skips the email confirmation
                 user.Email = Input.Email;
                 user.FirstName = Input.FirstName;
                 user.EmailConfirmed = true;
@@ -157,7 +157,7 @@ namespace NotesMVC.Areas.Identity.Pages.Account
                         return LocalRedirect(returnUrl);
                     }
                     */
-
+                    //promqna - it adds to a role the new client
                     await _userManager.AddToRoleAsync(user, "client");
                     
 

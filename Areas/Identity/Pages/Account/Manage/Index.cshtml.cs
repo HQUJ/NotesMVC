@@ -70,7 +70,7 @@ namespace NotesMVC.Areas.Identity.Pages.Account.Manage
 
             Username = userName;
 
-            //promqna
+            //promqna - shows the client's name
             FirstName = user.FirstName;
 
             Input = new InputModel

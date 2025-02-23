@@ -12,7 +12,7 @@ using NotesMVC.Models;
 
 namespace NotesMVC.Controllers
 {
-    //promqna
+    //promqna - it requires roles
     [Authorize]
     public class NotesController : Controller
     {
@@ -28,7 +28,7 @@ namespace NotesMVC.Controllers
         }
 
         // GET: Notes
-        //promqna
+        //promqna - this is a searcher that searches by string and returns the notes that contain the string in their title or their description
         public async Task<IActionResult> Index(string searchTerm)
         {
             //promqna  
@@ -40,10 +40,10 @@ namespace NotesMVC.Controllers
             }
 
             ViewData["SearchTerm"] = searchTerm;
-
+            //if the user is an admin they will be able to see all notes
             if (User.IsInRole("admin"))
                 return View(await notes.ToListAsync());
-
+            //if the user is not an admin they will be able to see anly their notes
             return View(await notes.Where(x => x.ClientEmail == User.Identity.Name).ToListAsync());
         }
 
