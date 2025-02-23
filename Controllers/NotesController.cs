@@ -118,7 +118,7 @@ namespace NotesMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //promqna
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description")] Note note)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,ClientEmail")] Note note)
         {
             if (id != note.Id)
             {
@@ -131,7 +131,10 @@ namespace NotesMVC.Controllers
                 {
                     //promqna
                     note.LastUpdateOn = DateTime.Now;
-                    note.ClientEmail = User.Identity.Name;
+                    //if (User.Identity.Name != "admin@admin.com")
+                    //    note.ClientEmail = User.Identity.Name;
+                    //else
+                    //    note.ClientEmail = email;
                     _context.Update(note);
                     await _context.SaveChangesAsync();
                 }

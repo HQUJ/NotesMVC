@@ -157,6 +157,10 @@ namespace NotesMVC.Areas.Identity.Pages.Account
                         return LocalRedirect(returnUrl);
                     }
                     */
+
+                    await _userManager.AddToRoleAsync(user, "client");
+                    
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                     //kraj na promqnata

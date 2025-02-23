@@ -1,4 +1,19 @@
 ﻿@page
+<style>
+    body {
+        background-color: #fef9e1;
+        color: #a31d1d;
+    }
+
+    a {
+        text-decoration: none;
+        outline-color: transparent;
+    }
+
+        a:link, a:visited, a:focus {
+            color: #6d2323;
+        }
+</style>
 @model IndexModel
 @{
     ViewData["Title"] = "Profile";
@@ -14,6 +29,11 @@
             <div class="form-floating mb-3">
                 <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled />
                 <label asp-for="Username" class="form-label"></label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="FirstName" class="form-control" placeholder="Your first name." disabled />
+                @* promqna gore i dolu *@
+                <label asp-for="FirstName" class="form-label"></label>
             </div>
             <div class="form-floating mb-3">
                 <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Please enter your phone number."/>
